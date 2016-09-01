@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app='chattyWeather'>
+  <head>
+    <meta charset="utf-8" />
+    <title>Chatty Weather</title>
+    <link rel="stylesheet" href="./style/style.css">
+  </head>
+  <body class="main" id="bg-anim">
+    <div>
+      <h1 class="title">Chatty Weather</h1>
+      <div ng-view></div>
+    </div>
+
+    <div id="sun"></div>
+
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-route.min.js"></script>
+
+    <script src="weather/weather.js"></script>
+    <script src="services/service.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
