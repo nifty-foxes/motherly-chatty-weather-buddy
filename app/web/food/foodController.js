@@ -10,8 +10,8 @@ var Yelp = require('yelp');
 var yelp = new Yelp({
   consumer_key: "jyK0pX1w36_zOyRDBCQGPA",
   consumer_secret: "fldLTHhsFY4tr_rl8wDwcF_LGaU",
-  token: "6TzUIWo9jSnFavceu5JgJKhp1HnnOx89",
-  token_secret: "bAvERieQodYWGQk3aoWC8fT3lJ0",
+  token: "SV6V9Vm7pndVNtbPzxjF1uYmdeftjZyX",
+  token_secret: "an2Idmg4tkrkcj93rTL6tJLFT74"
 });
  
 
@@ -38,16 +38,3 @@ yelp.search({
 module.exports = {
 getFoodPlaces: getFoodPlaces
 }
-
-// exports.yelp = function (req, res) {
-// 	var foodResults, diningResults, results={};
-// 	yelp.search({
-// 		term: req.query.food,
-// 		location: 'Manhattan', 
-//         sort: 2, 
-//         limit: 10},
-// 		  function(error, foodData) {
-// 			// results = {food:foodData}
-// 			res.json(foodData.businesses);
-// 		})
-// 	}

@@ -9,7 +9,6 @@ var app = express();
 
 
 function getHourly (req, res, next){
-  console.log("******")
  var headers = {}
  for (var key in request.headers) {
    if (request.headers.hasOwnProperty(key)) {
