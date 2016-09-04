@@ -22,6 +22,7 @@ angular.module('chattyWeather.weather', [])
     console.log($scope.activity)
     Activities.getActivities($scope.activity)
      $location.path('/activities');
+    return $scope.activity
   };
 
 
@@ -55,10 +56,13 @@ angular.module('chattyWeather.weather', [])
       skycons.play();
       $scope.phrase = data.phrases[Math.floor(Math.random() * data.phrases.length)];
       $scope.food = data.foods[Math.floor(Math.random() * data.foods.length)];
+         $scope.foodTips = "Want tips on the nearest" + " "+ $scope.food; 
+
       $scope.prop = data.props[Math.floor(Math.random() * data.props.length)];
-      $scope.activity = data.activity[Math.floor(Math.random() * data.activity.length)];
-      
+
+      $scope.activity = data.activity[Math.floor(Math.random() * data.activity.length)]; 
       $scope.tips = "Want tips on the nearest" + " "+ $scope.activity;   
+      
       $scope.temp = data.temperature.toFixed(1) + " ℉";
       $scope.city = data.timezone.split("/")[1].split("_").join(" ");
       $scope.time = timeNow();

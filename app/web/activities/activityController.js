@@ -4,18 +4,28 @@ var cors = require("cors");
 var request = require("request");
 var express = require('express')
 var app = express();
-
-var Yelp = require('yelp');
+var queryString = require('querystring');
+// var Yelp = require('yelp');
  
-var yelp = new Yelp({
+// var yelp = new Yelp({
+//   consumer_key: "jyK0pX1w36_zOyRDBCQGPA",
+//   consumer_secret: "fldLTHhsFY4tr_rl8wDwcF_LGaU",
+//   token: "SV6V9Vm7pndVNtbPzxjF1uYmdeftjZyX",
+//   token_secret: "an2Idmg4tkrkcj93rTL6tJLFT74"
+// });
+  
+
+var yelp = require("node-yelp");
+
+
+var client = yelp.createClient({
+  oauth: {
   consumer_key: "jyK0pX1w36_zOyRDBCQGPA",
   consumer_secret: "fldLTHhsFY4tr_rl8wDwcF_LGaU",
   token: "SV6V9Vm7pndVNtbPzxjF1uYmdeftjZyX",
   token_secret: "an2Idmg4tkrkcj93rTL6tJLFT74"
+  }
 });
-  
-
-
 
 
 // PersonModel.find({$where : 'this.favouriteFoods.indexOf("sushi") != -1'});
@@ -29,7 +39,9 @@ var yelp = new Yelp({
 // }
 
 function getActivities (req,res){
-yelp.search({
+    // var test = queryString.stringify(req.query.activity)
+    console.log(req.query.activity)
+client.search({
     // term: qs.stringify(req.body.activity),
     term: req.query.activity,
     location: 'Manhattan', 

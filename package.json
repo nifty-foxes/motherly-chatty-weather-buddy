@@ -15,6 +15,7 @@
     "moment-timezone": "^0.5.5",
     "mongoose": "~4.5.10",
     "mta-gtfs": "^1.0.2",
+    "node-yelp": "0.0.3",
     "querystring": "^0.2.0",
     "request": "^2.74.0",
     "unirest": "^0.5.1",

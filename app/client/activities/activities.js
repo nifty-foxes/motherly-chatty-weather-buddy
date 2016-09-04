@@ -6,7 +6,7 @@ angular.module('chattyWeather.activities', [])
 // console.log(data)
 
 var initializeActivities = function () {
-	Activities.postActivities()
+	Activities.getActivities()
 	.then(function (activities) {
 	         $scope.data = activities;
 	         // for(i=0;i< activities.length;i++){

@@ -38,16 +38,3 @@ yelp.search({
 module.exports = {
 getFoodPlaces: getFoodPlaces
 }
-
-// exports.yelp = function (req, res) {
-// 	var foodResults, diningResults, results={};
-// 	yelp.search({
-// 		term: req.query.food,
-// 		location: 'Manhattan', 
-//         sort: 2, 
-//         limit: 10},
-// 		  function(error, foodData) {
-// 			// results = {food:foodData}
-// 			res.json(foodData.businesses);
-// 		})
-// 	}
