@@ -1,24 +1,18 @@
 <div class="{{ weatherEvent }}">
-<div class="container">
-<div ng-controller = 'activitiesController'>
-
-	<h1> Activities  hiiii </h1>
-
-<h2>
-<ul ng-repeat='businesses in data'>
-<li> <img src="{{businesses.image_url}}"/>
-                    {{businesses.name}} :  {{businesses.phone}}	
-                    </li>
-</ul>
-</h2>
-
-
-
-
-
-</div>
-
-
-</div>
+	<div class="container">
+		<div ng-controller = 'activitiesController'>
+			<h1> Activities  hiiii </h1>
+			<h2>
+				<ul ng-repeat='businesses in data'>
+					<li> 
+						<img src="{{businesses.image_url}}"/>
+						<img src="{{businesses.rating_img_url}}"/><br>
+						{{businesses.name}} :  {{businesses.phone}}<br>
+						{{businesses.snippet_text}}		
+					</li>
+				</ul>
+			</h2>
+		</div>
+	</div>
 </div>
 

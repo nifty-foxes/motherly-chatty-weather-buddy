@@ -20,7 +20,7 @@ var yelp = new Yelp({
 
 // PersonModel.find({$where : 'this.favouriteFoods.indexOf("sushi") != -1'});
 // function getYelpTerm(req,res,next){
-// 	      console.log("herrreee")
+//        console.log("herrreee")
 //       var test =  req.query.activity.split(" ")
 //     // Phrase.find({})
 //     // .where('name').equals(req.query.activity)
@@ -41,7 +41,7 @@ yelp.search({
 .catch(function (err) {
   console.error(err);
 });
- 	
+  
 }
 
 
@@ -49,15 +49,5 @@ module.exports = {
 getActivities: getActivities
 }
 
-// exports.yelp = function (req, res) {
-// 	var activityResults, diningResults, results={};
-// 	yelp.search({
-// 		term: req.query.activity,
-// 		location: 'Manhattan', 
-//         sort: 2, 
-//         limit: 10},
-// 		  function(error, activityData) {
-// 			// results = {activity:activityData}
-// 			res.json(activityData.businesses);
-// 		})
-// 	}
+
+
