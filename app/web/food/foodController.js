@@ -5,23 +5,22 @@ var request = require("request");
 var express = require('express')
 var app = express();
 var qs = require('querystring');  
-var Yelp = require('yelp');
- 
-var yelp = new Yelp({
+
+var yelp = require("node-yelp");
+var client = yelp.createClient({
+  oauth: {
   consumer_key: "jyK0pX1w36_zOyRDBCQGPA",
   consumer_secret: "fldLTHhsFY4tr_rl8wDwcF_LGaU",
-  token: "6TzUIWo9jSnFavceu5JgJKhp1HnnOx89",
-  token_secret: "bAvERieQodYWGQk3aoWC8fT3lJ0",
+  token: "SV6V9Vm7pndVNtbPzxjF1uYmdeftjZyX",
+  token_secret: "an2Idmg4tkrkcj93rTL6tJLFT74"
+  }
 });
- 
+
 
 
 function getFoodPlaces (req,res){
-test= qs.stringify(req.query.food)
-	console.log(test)
-yelp.search({
-    // term: qs.stringify(req.body.food),
-    term: test,
+client.search({
+    term: req.body.food,
     location: 'Manhattan', 
     sort: 2, 
     limit: 10 })
@@ -38,16 +37,3 @@ yelp.search({
 module.exports = {
 getFoodPlaces: getFoodPlaces
 }
-
-// exports.yelp = function (req, res) {
-// 	var foodResults, diningResults, results={};
-// 	yelp.search({
-// 		term: req.query.food,
-// 		location: 'Manhattan', 
-//         sort: 2, 
-//         limit: 10},
-// 		  function(error, foodData) {
-// 			// results = {food:foodData}
-// 			res.json(foodData.businesses);
-// 		})
-// 	}

@@ -24,69 +24,64 @@ angular.module('chattyWeather.service', [])
 
 
 
-
 .factory('Activities', function ($http, $location) {
+    var storage ={};
+    function set(obj, data){
+      storage[obj] = data
+    }
 
-  var getActivities = function(activity){
-    return $http({
-      method: 'POST', 
-     url: '/api/activities/',
-     params: {activity: activity.toString()},
-   })         
-   
-  }
-
-  var postActivities = function (){
-    return $http({
-      method: 'GET',
-      url: '/api/activities/'
-    })
-    .then(function (resp) {
-      console.log(resp.data)
-      return resp.data;
-    });
-  }  
-  
-
-    return {
-      getActivities: getActivities,
-      postActivities:  postActivities
+    function get(obj){
+      return storage[obj]
     };
 
+    var getActivities = function(activity){
+    return $http({
+      method: 'POST', 
+      url: '/api/activities/',
+      data: {activity: activity}
+   })
+    
+   .then(function (resp) {
+      return resp.data;
+    });
+  }    
+  
+    return {
+      getActivities: getActivities,
+      set           : set,
+      get           : get
 
-
+    };
 })
-
 
 
 .factory('Food', function ($http, $location) {
 
-  var getFoodPlaces = function(food){
+  var storage ={};
+    function set(obj, data){
+      storage[obj] = data
+    }
+
+    function get(obj){
+      return storage[obj]
+    };
+    
+    var postFoodPlaces = function(food){
     return $http({
       method: 'POST', 
-     url: '/api/food/',
-     params: {food: food.toString()},
-   })         
-   
-  }
-
-  var postFoodPlaces = function (){
-    return $http({
-      method: 'GET',
-      url: '/api/food/'
-    })
-    .then(function (resp) {
-      console.log(resp.data)
+      url: '/api/food/',
+      data: {food: food}
+   })
+    
+   .then(function (resp) {
       return resp.data;
     });
-  }  
+  }    
   
-
     return {
-      getFoodPlaces: getFoodPlaces,
-      postFoodPlaces:  postFoodPlaces
+      postFoodPlaces: postFoodPlaces,
+      set           : set,
+      get           : get
+
     };
-
-
-
 })

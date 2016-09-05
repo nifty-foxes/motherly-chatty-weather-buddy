@@ -4,23 +4,33 @@ var cors = require("cors");
 var request = require("request");
 var express = require('express')
 var app = express();
-
-var Yelp = require('yelp');
+var queryString = require('querystring');
+// var Yelp = require('yelp');
  
-var yelp = new Yelp({
+// var yelp = new Yelp({
+//   consumer_key: "jyK0pX1w36_zOyRDBCQGPA",
+//   consumer_secret: "fldLTHhsFY4tr_rl8wDwcF_LGaU",
+//   token: "SV6V9Vm7pndVNtbPzxjF1uYmdeftjZyX",
+//   token_secret: "an2Idmg4tkrkcj93rTL6tJLFT74"
+// });
+  
+
+var yelp = require("node-yelp");
+
+
+var client = yelp.createClient({
+  oauth: {
   consumer_key: "jyK0pX1w36_zOyRDBCQGPA",
   consumer_secret: "fldLTHhsFY4tr_rl8wDwcF_LGaU",
-  token: "6TzUIWo9jSnFavceu5JgJKhp1HnnOx89",
-  token_secret: "bAvERieQodYWGQk3aoWC8fT3lJ0",
+  token: "SV6V9Vm7pndVNtbPzxjF1uYmdeftjZyX",
+  token_secret: "an2Idmg4tkrkcj93rTL6tJLFT74"
+  }
 });
- 
-
-
 
 
 // PersonModel.find({$where : 'this.favouriteFoods.indexOf("sushi") != -1'});
 // function getYelpTerm(req,res,next){
-// 	      console.log("herrreee")
+//        console.log("herrreee")
 //       var test =  req.query.activity.split(" ")
 //     // Phrase.find({})
 //     // .where('name').equals(req.query.activity)
@@ -29,9 +39,9 @@ var yelp = new Yelp({
 // }
 
 function getActivities (req,res){
-yelp.search({
-    // term: qs.stringify(req.body.activity),
-    term: req.query.activity,
+  console.log("bodyyyyyy",req.body)
+client.search({
+    term: req.body.activity,
     location: 'Manhattan', 
     sort: 2, 
     limit: 10 })
@@ -41,7 +51,7 @@ yelp.search({
 .catch(function (err) {
   console.error(err);
 });
- 	
+  
 }
 
 
@@ -49,15 +59,5 @@ module.exports = {
 getActivities: getActivities
 }
 
-// exports.yelp = function (req, res) {
-// 	var activityResults, diningResults, results={};
-// 	yelp.search({
-// 		term: req.query.activity,
-// 		location: 'Manhattan', 
-//         sort: 2, 
-//         limit: 10},
-// 		  function(error, activityData) {
-// 			// results = {activity:activityData}
-// 			res.json(activityData.businesses);
-// 		})
-// 	}
+
+

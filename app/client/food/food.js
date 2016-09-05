@@ -5,9 +5,9 @@ angular.module('chattyWeather.food', [])
   $scope.data;
 // console.log(data)
 
-var initializeActivities = function () {
-	console.log("hereeee")
-	Food.postFoodPlaces()
+var initializeFood = function () {
+	var getTerm = Food.get("yelpFoodTerm")
+	Food.postFoodPlaces(getTerm)
 	.then(function (foodPlaces) {
 	         $scope.data = foodPlaces;
 	     })
@@ -18,7 +18,7 @@ var initializeActivities = function () {
 
 };
 
-  initializeActivities()
+  initializeFood()
 
 })
 
