@@ -19,15 +19,7 @@ var client = yelp.createClient({
 });
 
 
-// PersonModel.find({$where : 'this.favouriteFoods.indexOf("sushi") != -1'});
-// function getYelpTerm(req,res,next){
-//        console.log("herrreee")
-//       var test =  req.query.activity.split(" ")
-//     // Phrase.find({})
-//     // .where('name').equals(req.query.activity)
 
-
-// }
 
 function getActivities (req,res){
   console.log("bodyyyyyy",req.body)
