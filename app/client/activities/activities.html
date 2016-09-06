@@ -16,24 +16,23 @@
 	</div>
 </div>
  -->
-<html>
 
-   <head>
 
-     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-     <title>My site title</title>
+     
+
+
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.6/jquery-editable/css/jquery-editable.css">
 <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
      <style type="text/css">
 /* app css stylesheet */
 
-body {
+body, html {
+    overflow:  initial !important;
 }
  .container{
  	background: #fff;
-  /*overflow:  initial*/
  }
 
 .container2{
@@ -299,8 +298,8 @@ z-index: 10
 
      </style>
 
-  </head>
-  <body>
+
+
   	<!-- <div class="{{ weatherEvent }}"> -->
   		<div class="container">
   			<div ng-controller = 'activitiesController'>                    
@@ -331,6 +330,6 @@ z-index: 10
   			</div>
   		</div>
   	</div>
-  </body>
 
-</html>
+
+

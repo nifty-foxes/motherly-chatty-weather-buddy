@@ -13,16 +13,18 @@ angular.module('chattyWeather.weather', [])
   $scope.weatherEvent;
 
   $scope.getFoodTerm = function() {
-    Food.postFoodPlaces($scope.food)
+    Food.postFoodPlaces($scope.food.split(":")[1])
+        console.log($scope.food.split(":")[0])
      $location.path('/food');
     return $scope.food
   };
 
 
   $scope.getActivityTerm = function() {
-    Activities.getActivities($scope.activity)
+    Activities.getActivities($scope.activity[1])
+    console.log($scope.activity)
     $location.path('/activities');
-    return $scope.activity
+    return $scope.activity[1]
   };
     
 
@@ -56,12 +58,13 @@ angular.module('chattyWeather.weather', [])
       skycons.set(data.weatherEvent, data.weatherEvent);
       skycons.play();
       $scope.phrase = data.phrases[Math.floor(Math.random() * data.phrases.length)];
-      $scope.food = data.foods[Math.floor(Math.random() * data.foods.length)];
+      $scope.food = data.foods[Math.floor(Math.random() * data.foods.length)].split(":")[0];
       $scope.foodTips = "Find Nearest"
 
       $scope.prop = data.props[Math.floor(Math.random() * data.props.length)];
 
-      $scope.activity = data.activity[Math.floor(Math.random() * data.activity.length)];
+      $scope.activity = data.activity[Math.floor(Math.random() * data.activity.length)].split(":")[0];
+
       $scope.tips = "Find Nearest";
 
       $scope.temp = data.temperature.toFixed(1) + " ℉";
