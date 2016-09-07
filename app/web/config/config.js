@@ -1,0 +1,1 @@
+module.exports = 'mongodb://selimc:godzilla1@ds017256.mlab.com:17256/chattyweather';
