@@ -8,10 +8,16 @@ module.exports = {
     var weatherEvent = hourlyData[0].icon;
     var avgTemperature = 0;
     var events = [];
-    var hourlyWeather = [];
+    var hourlyTemp = [];
+    var hourlyTime = [];
 
     for(var i = 0; i < hourlyData.length; i++){
-      hourlyWeather.push(hourlyData[i].temperature);
+      hourlyTemp.push(hourlyData[i].temperature);
+    }
+
+      for(var i = 0; i < hourlyData.length; i++){
+        var date = new Date();
+        hourlyTime.push(hourlyData[i].time);
     }
 
     for(var i = 0; i < 12; i++) {
@@ -25,7 +31,8 @@ module.exports = {
       temperatureNum: hourlyData[0].temperature,
       temperature: temperature, 
       weatherEvent: weatherEvent,
-      hourlyWeather: hourlyWeather
+      hourlyTemp: hourlyTemp,
+      hourlyTime: hourlyTime
     };
     // console.log('HOURLYWEATHER', req.body.hourlyWeather);
     req.query = req.body;
