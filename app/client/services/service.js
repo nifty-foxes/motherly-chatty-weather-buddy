@@ -58,11 +58,28 @@ angular.module('chattyWeather.service', [])
     })
   
     .then(function (resp) {
+      console.log(resp.data)
       return resp.data;
     });
   }    
   
   return {
     postFoodPlaces: postFoodPlaces
+  };
+})
+
+.factory('Music', function ($http, $location, $window) {
+    return $http({
+      method: 'POST', 
+      url: '/api/music/',
+      data: {music: music}
+    })
+  
+    .then(function (resp) {
+      console.log('############food RESP###############', resp.data)
+      return resp.data;
+    });    
+  
+  return {
   };
 })
