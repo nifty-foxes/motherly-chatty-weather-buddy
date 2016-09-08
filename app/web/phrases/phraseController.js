@@ -19,7 +19,7 @@ module.exports = {
       phrases.timezone = copyReq.timezone;
       phrases.subwayInfo = req.body.subwayInfo;
       // phrases.subwayDetails = req.body.subwayDetails;
-      console.log('phrases', phrases);
+      // console.log('phrases', phrases);
       res.json(phrases);
     });
   },
