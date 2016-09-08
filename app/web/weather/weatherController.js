@@ -13,7 +13,9 @@ function getHourly(req, res, next) {
   request.get({url:newurl}, function(error, response, body) {
     if(error) next(error);
 
+
     req.body = JSON.parse(body).hourly;
+    console.log('WEATHERBODY', req.body);
     req.body.timezone = JSON.parse(body).timezone;
     req.body = JSON.stringify(req.body);
     // console.log('REQBODY', req.body); //FULL THING SHOWS
