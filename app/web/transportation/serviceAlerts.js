@@ -27,7 +27,9 @@ module.exports = {
       result.push({ //PLACEHOLDER
         status : 'DELAYS',
         name : 'NUM1',
-        text : 'Delays Posted: 0/08/2016 5:13PM<br><br>Following an earlier incident at 170 St, [4] service has resumed with residual delays.<br><br>b<br><br>c<br><br>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM<br><br>e<br><br>f<br><br>g<br><br>h<br><br>i<br><br>j<br><br>k<br><br>l<br><br>'
+        text : 'Delays Posted: 0/08/2016 5:13PM<br><br>Following an earlier incident at 170 St, [4] service has resumed with residual delays.<br><br>b<br><br>c<br><br>MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM<br><br>e<br><br>f<br><br>g<br><br>h<br><br>i<br><br>j<br><br>k<br><br>l<br><br>',
+        Date: '0/08/2016',
+        Time: '5:13PM'
       })
 
       result.push({
@@ -68,11 +70,22 @@ module.exports = {
       for(var i = 0; i< result.length; i++) {
         if(result[i].status === "DELAYS" || result[i].status === "PLANNED WORK") {
           console.log('THING', result[i]);
-          var info = detailSplitter(result[i].text);
+          // var info = detailSplitter(result[i].text);
+          var info = {};
           var lines = result[i].name;
           var status = result[i].status;
+          var date = result[i].Time;
+          var text = result[i].text;
+          var time = result[i].Date;
+          // var postDate = result[i].date
+          info.title = status + '<br>Posted: ' + date + ' ' + time;
           info.summary = lines + " : " + status;
-          // info.details = result[i].text;
+          info.text = text;
+          // (Parsing gets too cute with this)
+          // info.text = text.indexOf(time) !== -1 ?
+          //   text.split(time)[1] :
+          //   text
+          // ;
           console.log('pushing', info);
           subwayInfo.push(info);
         }
