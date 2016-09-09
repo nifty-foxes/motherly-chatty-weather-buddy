@@ -35,6 +35,8 @@ h1 {
 
 
 
+
+
 /*    MAIN BUBBLE    */
 
 .mainPhrase {
@@ -92,7 +94,6 @@ left: 48%;
   transform: translate(-50%, -52%);
   width: 44%;
   padding-right: 1%;
-
 }
 
 .temp, .city, .time, .icon {
@@ -205,6 +206,7 @@ left: 48%;
 .subTitle {
   position: absolute;
   bottom: -80px;
+  margin-bottom: 30px;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
@@ -231,6 +233,11 @@ h3{
     font-size: 16px;
     /*font-family: 'Raleway', sans-serif;*/
 }
+.popup{
+ padding-top: 20px;
+ float: left;
+ padding-left: 40px;
+ }
 
 .phrases .popover {
   background-color: transparent;
@@ -290,6 +297,7 @@ h3{
   background-position: 0px 0px;
   background-repeat: repeat;
   height: 100%;
+  overflow-y: auto;
 
   animation: bganimCloud 50s linear infinite;
 }
