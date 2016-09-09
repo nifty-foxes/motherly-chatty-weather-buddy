@@ -15,7 +15,6 @@ angular.module('chattyWeather.service', [])
           params: {latitude: latitude, longitude: longitude}
            // params: {latitude: 51.5, longitude: 0} // London
           // params: {latitude: 34, longitude: 118} // Shanghai
-
         }));
       });
     });
