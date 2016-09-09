@@ -24,7 +24,7 @@ html, body {margin: 0;
 }
 h1 {
   margin: 0;
-}
+  }
 .title {
   font-family: 'Lobster', cursive;
   font-size: 3.5rem;
@@ -219,6 +219,19 @@ left: 48%;
 
 /* Outer (specific) popover box which houses mtaAlertBox */
   /* Margin & padding adjustments are a hacky way to make the popover titles appear how I'd like*/
+
+/* Popover heading */
+h3{
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+}
+.popover {
+    background: tomato;
+    padding: 10px;
+    font-size: 16px;
+    /*font-family: 'Raleway', sans-serif;*/
+}
+
 .phrases .popover {
   background-color: transparent;
   border: none;
@@ -520,3 +533,5 @@ left: 48%;
   from {  transform: rotate(255deg) translateY(360%) rotate(255deg); }
   to   {  transform: rotate(115deg) translateY(360%) rotate(115deg); }
 } */
+
+
