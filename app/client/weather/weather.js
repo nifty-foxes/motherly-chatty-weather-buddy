@@ -28,12 +28,6 @@ angular.module('chattyWeather.weather', ['ui.bootstrap'])
     console.log('clicked alert', alert.details);
   };
 
-  var str = '<b style="color: red">I can</b> have <div class="label label-success">HTML</div> content';
-  var fn = function(htmlStr) {
-    console.log('htmlstr', htmlStr);
-    console.log('sce', $sce.trustAsHtml(htmlStr));
-    // return $sce.trustAsHtml(htmlStr)
-  };
   // $scope.alertDetails = $sce.trustAsHtml('<b style="color: red">I can</b> have <div class="label label-success">HTML</div> content');
   // $scope.alertDetails = $sce.trustAsHtml('<span style="color: black">hi</span>');
   // $scope.placeholdertxt = '<span style="color: black">hi</span>';
@@ -59,7 +53,7 @@ angular.module('chattyWeather.weather', ['ui.bootstrap'])
   var init = function () {
     goGet.getWeatherData()
       .then(function (data) {
-        console.log('init data', data);
+        // console.log('init data', data);
         weatherData = data.data;
         display(weatherData);
         setInterval(display.bind(null, weatherData), 5000);
@@ -74,7 +68,7 @@ angular.module('chattyWeather.weather', ['ui.bootstrap'])
     positionSunMoon();
     $scope.$apply(function() {
       $scope.weatherEvent = data.weatherEvent;
-      console.log('WEATHEREVENT', $scope.weatherEvent);
+      // console.log('WEATHEREVENT', $scope.weatherEvent);
       var skycons = new Skycons({"color": "white"});
       skycons.set(data.weatherEvent, data.weatherEvent);
       skycons.play();
@@ -89,7 +83,7 @@ angular.module('chattyWeather.weather', ['ui.bootstrap'])
       $scope.city = data.timezone.split("/")[1].split("_").join(" ");
       $scope.time = timeNow();
 
-      console.log('mta info', data.subwayInfo);
+      // console.log('mta info', data.subwayInfo);
       $scope.mtaAlert = data.subwayInfo.length === 0 ? ["All Good!"] : data.subwayInfo;
       // $scope.mtaAlert = ["7 : DELAYS", "A C E: PLANNED WORK"] //PLACEHOLDER
 

@@ -9,7 +9,6 @@ angular.module('chattyWeather.service', [])
       $window.navigator.geolocation.getCurrentPosition(function(location) {
         var latitude = location.coords.latitude;
         var longitude = location.coords.longitude;
-        console.log('lat', latitude, longitude);
         resolve($http({
           method: 'GET',
           url: '/api/weather',
@@ -53,7 +52,7 @@ angular.module('chattyWeather.service', [])
   var postFoodPlaces = function(food){
 
     return $http({
-      method: 'GET',
+      method: 'POST',
       url: '/api/food/',
       data: {food: food}
     })
@@ -66,23 +65,3 @@ angular.module('chattyWeather.service', [])
     postFoodPlaces: postFoodPlaces
   };
 })
-
-
-// .factory('MTA', function ($http, $location, $window) {
-//   var getAlertText = function(line) {
-//     var url = 'http://www.mta.info/status/subway/' + line;
-//     return $http({
-//       method: 'GET',
-//       url: url
-//       // url: '/api/alerts/'
-//     })
-//     .then(function (resp) {
-//       console.log('DATA', resp.data);
-//       return resp.data;
-//     });
-//   };
-//
-//   return {
-//     getAlertText : getAlertText
-//   };
-// })

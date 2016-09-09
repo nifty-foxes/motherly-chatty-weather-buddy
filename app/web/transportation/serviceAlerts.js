@@ -12,18 +12,6 @@ module.exports = {
 
     // mta.status returns a JSON arr with details for each subway line
     mta.status('subway').then(function (result) {
-      var detailSplitter = function(str) {
-
-        console.log('splitting', str);
-        var idx = str.indexOf('<br><br>');
-        var title = str.slice(0,idx);
-        var text = str.slice(idx+8);
-        return {
-          title: title,
-          text: text
-        }
-      }
-
       result.push({ //PLACEHOLDER
         status : 'DELAYS',
         name : 'NUM1',
@@ -69,30 +57,20 @@ module.exports = {
 
       for(var i = 0; i< result.length; i++) {
         if(result[i].status === "DELAYS" || result[i].status === "PLANNED WORK") {
-          console.log('THING', result[i]);
-          // var info = detailSplitter(result[i].text);
           var info = {};
           var lines = result[i].name;
           var status = result[i].status;
           var date = result[i].Date || 'Date Unspecified';
           var text = result[i].text;
           var time = result[i].Time || 'Time Unspecified';
-          // var postDate = result[i].date
           info.title = status + '<br>Posted: ' + date + ' ' + time;
           info.summary = lines + " : " + status;
           info.text = text;
-          // (Parsing gets too cute with this)
-          // info.text = text.indexOf(time) !== -1 ?
-          //   text.split(time)[1] :
-          //   text
-          // ;
-          console.log('pushing', info);
           subwayInfo.push(info);
         }
       }
 
       req.query.subwayInfo = subwayInfo;
-      // req.body.subwayDetails = module.exports.getAllMtaData();
       next();
      });
   },
