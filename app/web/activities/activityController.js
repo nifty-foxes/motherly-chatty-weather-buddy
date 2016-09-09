@@ -16,7 +16,6 @@ var client = yelp.createClient({
 });
 
 function getActivities(req,res) {
-console.log("bodyyyyyy",req.body);
   client.search({
     term: req.body.activity,
     location:'Manhattan', 

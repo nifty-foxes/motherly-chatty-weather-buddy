@@ -14,8 +14,14 @@ function getHourly(req, res, next) {
     if(error) next(error);
 
     req.body = JSON.parse(body).hourly;
+    var data = req.body.data;
+    // console.log(' length', data.length);
+    // for(var i = 0; i < data.length; i++){
+    // console.log("TEMP", req.body.data[i].temperature);
+    // }
     req.body.timezone = JSON.parse(body).timezone;
     req.body = JSON.stringify(req.body);
+    // console.log("REQBODY", req.body)
     next();
   });
 }

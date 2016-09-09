@@ -18,6 +18,9 @@ module.exports = {
       phrases.temperature = copyReq.temperatureNum;
       phrases.timezone = copyReq.timezone;
       phrases.subwayInfo = req.body.subwayInfo;
+      phrases.hourlyTemp = req.body.hourlyTemp;
+      phrases.hourlyTime = req.body.hourlyTime;
+      phrases.data = req.body.data;
       res.json(phrases); 
     });
   },
