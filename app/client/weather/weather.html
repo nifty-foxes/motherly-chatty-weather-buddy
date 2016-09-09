@@ -1,7 +1,14 @@
 <div class="{{ weatherEvent }}-Star positionSun"></div>
 <div class="{{ weatherEvent }}-Star positionMoon"></div>
-<div class="{{ weatherEvent }}"> <!-- background animations-->
+   <!-- background animations-->
+<div class="{{ weatherEvent }}">
+<!-- <div class="clear-night"> -->
+
+
+  <!--  -->
   <h1 class="title">&mdash; Chatty Weather &mdash;</h1>
+  <!-- <h1 class="clickable" uib-popover-html="alertDetails" ng-click="displayAlert(alert)">Heloooo</h1> -->
+
   <div class="wrapper">
 
 
@@ -12,7 +19,7 @@
 
     <div class="infoBox">
       <div class="infoWrapper">
-        <div class="icon"> 
+        <div class="icon">
             <canvas id="{{ weatherEvent }}" width="64" height="64"></canvas>
         </div>
         <div class="temp">{{ temp }}</div>
@@ -45,7 +52,16 @@
 
         <div ng-show="city === 'New York'" class="bubble mtaBubble phrases">
           <div class="mtaAlertBox">
-            <div ng-repeat="alert in mtaAlert" class="phrases">{{alert}}</div>
+            <div ng-repeat="alert in mtaAlert" class="phrases">
+              <span class="clickable" ng-click="assignDetail(alert)" popover-placement="left" uib-popover-html="alertDetails" >{{alert.summary}}</span>
+                <!-- Static HTML -->
+              <!-- <span class="clickable" ng-click="displayAlert(alert)" uib-popover-html="alertDetails" >{{alert.summary}}</span> -->
+                <!-- http://stackoverflow.com/questions/37557147/angular-ui-bootstrap-dynamic-popover-template-id -->
+                <!-- http://stackoverflow.com/questions/34797218/dynamically-creating-ng-templates-to-show-popover-content-using-angular-ui-boots -->
+              <!-- <span class="clickable" uib-popover-template="alertDetails.html" popover-trigger="mouseenter">{{alert.summary}}</span> -->
+                <!-- ng-click="displayAlert(alert)" -->
+              <!-- uib-popover-template="myTemplate_row.html" popover-trigger="mouseenter"> -->
+            </div>
           </div>
           <div class="subTitle">MTA alerts</div>
         </div>
@@ -58,8 +74,9 @@
 </div>
 
 
-
-
-
-
-
+<script type="text/ng-template" id="alertDetails.html">
+  <style="background:blue"></style>
+  <div>
+    <span style="background:blue"><strong>BOLD</strong>: {{alert.details}}</span>
+  </div>
+</script>

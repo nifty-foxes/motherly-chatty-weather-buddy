@@ -1,6 +1,6 @@
-angular.module('chattyWeather.weather', [])
+angular.module('chattyWeather.weather', ['ui.bootstrap'])
 
-.controller('WeatherController', function($scope, goGet, $http, $location, Activities, Food, $window) {
+.controller('WeatherController', function($scope, goGet, $http, $location, Activities, Food, $sce, $window) {
 	var weatherData;
   $scope.phrase = ". . loading . .";
   $scope.food;
@@ -23,8 +23,31 @@ angular.module('chattyWeather.weather', [])
     $window.localStorage.setItem('currentActivity', $scope.activity[1]);
     $location.path('/activities');
   };
-    
 
+  $scope.displayAlert = function(alert) {
+    console.log('clicked alert', alert.details);
+  };
+
+  var str = '<b style="color: red">I can</b> have <div class="label label-success">HTML</div> content';
+  var fn = function(htmlStr) {
+    console.log('htmlstr', htmlStr);
+    console.log('sce', $sce.trustAsHtml(htmlStr));
+    // return $sce.trustAsHtml(htmlStr)
+  };
+  // $scope.alertDetails = $sce.trustAsHtml('<b style="color: red">I can</b> have <div class="label label-success">HTML</div> content');
+  // $scope.alertDetails = $sce.trustAsHtml('<span style="color: black">hi</span>');
+  // $scope.placeholdertxt = '<span style="color: black">hi</span>';
+  // $scope.alertDetails = function(htmlStr) {
+  //   console.log('htmlstr', htmlStr);
+  //   console.log('sce', $sce.trustAsHtml(htmlStr));
+  //   // return $sce.trustAsHtml(htmlStr)
+  // };
+
+  $scope.alertDetails = $sce.trustAsHtml();
+  $scope.assignDetail = function(alert) {
+    console.log('alert', alert);
+    $scope.alertDetails = $sce.trustAsHtml('<div class="mtaTitle">' + alert.title + '</div><div class="mtaDetails">' + alert.text + '</div>');
+  }
 
   function timeNow() {
     var d = new Date(),
@@ -36,6 +59,7 @@ angular.module('chattyWeather.weather', [])
   var init = function () {
     goGet.getWeatherData()
       .then(function (data) {
+        console.log('init data', data);
         weatherData = data.data;
         display(weatherData);
         setInterval(display.bind(null, weatherData), 5000);
@@ -43,16 +67,18 @@ angular.module('chattyWeather.weather', [])
       .catch(function (error) {
         console.error(error);
       });
-   
+
   };
 
   var display = function(data) {
     positionSunMoon();
     $scope.$apply(function() {
       $scope.weatherEvent = data.weatherEvent;
+      console.log('WEATHEREVENT', $scope.weatherEvent);
       var skycons = new Skycons({"color": "white"});
       skycons.set(data.weatherEvent, data.weatherEvent);
       skycons.play();
+      // console.log('data', data);
       $scope.phrase = data.phrases[Math.floor(Math.random() * data.phrases.length)];
       $scope.food = data.foods[Math.floor(Math.random() * data.foods.length)].split(":");
 
@@ -63,16 +89,18 @@ angular.module('chattyWeather.weather', [])
       $scope.city = data.timezone.split("/")[1].split("_").join(" ");
       $scope.time = timeNow();
 
+      console.log('mta info', data.subwayInfo);
       $scope.mtaAlert = data.subwayInfo.length === 0 ? ["All Good!"] : data.subwayInfo;
-      
+      // $scope.mtaAlert = ["7 : DELAYS", "A C E: PLANNED WORK"] //PLACEHOLDER
+
     });
   }
-  
+
   var positionSunMoon = function() {
     var d = new Date();
     var minutes = d.getHours() * 60 +  d.getMinutes() - (6 * 60);
     var rad = 2 * Math.PI * minutes / 1440
-    var top = Math.sin(Math.PI - rad) * (window.innerHeight) 
+    var top = Math.sin(Math.PI - rad) * (window.innerHeight)
     var left = Math.cos(Math.PI - rad) * (window.innerHeight)
 
     if(document.getElementsByClassName("positionSun")[0] !== undefined) {
