@@ -31,14 +31,13 @@ module.exports = {
     req.body = {
       timezone: JSON.parse(req.body).timezone,
       temperatureNum: hourlyData[0].temperature,
-      temperature: temperature, 
+      temperature: temperature,
       weatherEvent: weatherEvent,
       hourlyTemp: hourlyTemp,
       hourlyTime: hourlyTime,
       data: hourlyData.slice(1,7)
     };
-    // console.log('HOURLYWEATHER', req.body.hourlyWeather);
     req.query = req.body;
-    next();  
+    next();
   }
 };

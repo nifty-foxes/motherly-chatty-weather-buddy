@@ -18,20 +18,17 @@ var client = yelp.createClient({
 function getActivities(req,res) {
   client.search({
     term: req.body.activity,
-    location:'Manhattan', 
-    sort: 2, 
+    location:'Manhattan',
+    sort: 2,
     limit: 10 })
   .then(function (data) {
   res.send(data.businesses);
   })
   .catch(function (err) {
   console.error(err);
-  }); 
+  });
 }
 
 module.exports = {
 getActivities: getActivities
 }
-
-
-
