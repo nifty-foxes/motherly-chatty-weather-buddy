@@ -12,7 +12,7 @@ module.exports = {
       if(err) {
         console.log(err);
       }
-        
+
       phrases = order(phrases);
       phrases.weatherEvent = req.body.weatherEvent;
       phrases.temperature = copyReq.temperatureNum;
@@ -21,7 +21,7 @@ module.exports = {
       phrases.hourlyTemp = req.body.hourlyTemp;
       phrases.hourlyTime = req.body.hourlyTime;
       phrases.data = req.body.data;
-      res.json(phrases); 
+      res.json(phrases);
     });
   },
 
@@ -36,9 +36,9 @@ module.exports = {
     }
 
   Phrase.create(newPhrase, function (err, newPhrase) {
-    if(err) { 
+    if(err) {
       return console.log(err);
-    }  
+    }
       res.json(newPhrase);
     });
   }

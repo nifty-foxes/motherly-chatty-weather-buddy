@@ -3,7 +3,7 @@
 angular.module('chattyWeather.service', [])
 
 .factory('goGet', function($window, $http) {
-  
+
   var getWeatherData = function () {
     return new Promise(function(resolve, reject) {
       $window.navigator.geolocation.getCurrentPosition(function(location) {
@@ -17,7 +17,7 @@ angular.module('chattyWeather.service', [])
           // params: {latitude: 34, longitude: 118} // Shanghai
 
         }));
-      });    
+      });
     });
   };
 
@@ -32,16 +32,16 @@ angular.module('chattyWeather.service', [])
 
 
     var getActivities = function(activity){
-       
+
       return $http({
-        method: 'POST', 
+        method: 'POST',
         url: '/api/activities/',
         data: {activity: activity}
     })
     .then(function (resp) {
       return resp.data;
     });
-  }    
+  }
   return {
     getActivities: getActivities
   };
@@ -52,16 +52,15 @@ angular.module('chattyWeather.service', [])
   var postFoodPlaces = function(food){
 
     return $http({
-      method: 'POST', 
+      method: 'POST',
       url: '/api/food/',
       data: {food: food}
     })
-  
     .then(function (resp) {
       return resp.data;
     });
-  }    
-  
+  }
+
   return {
     postFoodPlaces: postFoodPlaces
   };
