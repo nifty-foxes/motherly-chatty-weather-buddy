@@ -10,6 +10,7 @@ module.exports = {
     var events = [];
     var hourlyTemp = [];
     var hourlyTime = [];
+    var obj = {};
 
     for(var i = 0; i < hourlyData.length; i++){
       hourlyTemp.push(hourlyData[i].temperature);
@@ -19,6 +20,7 @@ module.exports = {
         var date = new Date();
         hourlyTime.push(hourlyData[i].time);
     }
+
 
     for(var i = 0; i < 12; i++) {
       avgTemperature += hourlyData[i].temperature / 12;
@@ -32,7 +34,8 @@ module.exports = {
       temperature: temperature, 
       weatherEvent: weatherEvent,
       hourlyTemp: hourlyTemp,
-      hourlyTime: hourlyTime
+      hourlyTime: hourlyTime,
+      data: hourlyData.slice(1,7)
     };
     // console.log('HOURLYWEATHER', req.body.hourlyWeather);
     req.query = req.body;
