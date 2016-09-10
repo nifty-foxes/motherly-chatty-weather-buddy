@@ -56,6 +56,7 @@ angular.module('chattyWeather.service', [])
       data: {food: food}
     })
     .then(function (resp) {
+      console.log(resp.data)
       return resp.data;
     });
   }
@@ -64,3 +65,4 @@ angular.module('chattyWeather.service', [])
     postFoodPlaces: postFoodPlaces
   };
 })
+
