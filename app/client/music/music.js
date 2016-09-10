@@ -4,11 +4,11 @@ angular.module('chattyWeather.music', [
     'ngRoute'
     ])
 
-.controller('MusicController', function($scope, goGet) {
+.controller('MusicController', function($scope, goGet, $timeout) {
         var weatherData;
         console.log(goGet)
         $scope.songs = [];
-        
+        $scope.music_index= 0;
         var init = function () {
             goGet.getWeatherData()
                 .then(function (data) {
@@ -45,6 +45,7 @@ angular.module('chattyWeather.music', [
                                 };
                                 // console.log("NEWOBJJJJJJJJJJJJJJJJJJJJJJJJJ", newObj)
                                 $scope.$apply(function () {
+                                    console.log("push", newObj)
                                     $scope.songs.push(newObj);
                                 });
                             }); 
@@ -52,7 +53,17 @@ angular.module('chattyWeather.music', [
                     })
                 }      
             })
-            });
+          });
+        }
+
+        $scope.next = function () {
+          if ($scope.music_index >= $scope.songs.length - 1) {
+              $scope.music_index = 0;
+          } else {
+              $scope.music_index++;
           }
+          console.log($scope.songs.length + '/' + $scope.music_index);
+        };
   init()
+  // $timeout(function(){$scope.next()}, 1000);
 });
