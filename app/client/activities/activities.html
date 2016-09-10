@@ -2,6 +2,7 @@
 <div ng-controller="WeatherController">
 <div class="{{ weatherEvent }}">
   <div class="container">
+  <br><br>
   <a href="/">Home</a>
   <a href="/#/food">Food</a>
     <h1 class="linkTitle">&ndash; Activity &ndash;</h1>
@@ -11,9 +12,9 @@
         <a href="{{businesses.url}}" target="_blank">
           <img class="thumb" ng-src="{{businesses.image_url}}" />
           <img ng-src="{{businesses.rating_img_url}}"/>
-          <h2>{{ businesses.name }}</h2>
+          <h2 class="businessName">{{ businesses.name }}</h2>
         </a>
-        <blockquote>{{ businesses.snippet_text }}</blockquote>
+        <h3 class="businessText">{{ businesses.snippet_text }}</h3>
       </div>
     </div>
   </div>

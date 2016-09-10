@@ -1,6 +1,5 @@
 
 /*    MAIN STYLES    */
-
 * {
   box-sizing: border-box;
 }
@@ -22,6 +21,18 @@ html, body {margin: 0;
 .box {
   height: 100%;
 }
+
+.businessName{
+  font-size: 25px;
+  margin-top: 3px;
+  margin-bottom:-18px;
+}
+
+
+.businessText{
+  font-size: 18px;
+  margin:0px;
+}
 h1 {
   margin: 0;
   }
@@ -32,7 +43,14 @@ h1 {
   color: white;
   text-align: center;
 }
+a{
+  color: white;
+  padding: 18px;
+}
 
+a:visited{
+  color:white;
+}
 
 
 
@@ -264,6 +282,7 @@ h3{
   margin: 0;
   padding: 8px 14px;
   border-radius: 10px 10px 0px 0px;
+  color: black;
 }
 
 .mtaDetails {
