@@ -108,6 +108,7 @@ angular.module('chattyWeather.weather', ['ui.bootstrap'])
     $scope.$apply(function() {
       // console.log("DATAAA", data.hourlyTemp)
       $scope.weatherEvent = data.weatherEvent;
+
       // console.log('WEATHEREVENT', $scope.weatherEvent);
       var skycons = new Skycons({"color": "white"});
       skycons.set(data.weatherEvent, data.weatherEvent);

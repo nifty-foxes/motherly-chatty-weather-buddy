@@ -39,10 +39,83 @@
     <p ng-bind-html="trustAsHtml(question.body)"></p>
 </div>
     </tr> -->
-      </div>
+    <!-- ##############MUSIC############ -->
+     <!-- <div class="container" ng-controller="MusicController" id="musicPlayer">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h5>Songs</h5>
+                <ul> -->
+                <!--     <li ng-repeat="song in songs">
+                        <button type="button" class="btn btn-primary" music-player="play" add-song="song">{{ song.title }}</button>
+                        <button type="button" class="btn btn-primary" music-player add-song="song">+</button>
+                    </li>
+                </ul> -->
+
+               <!--  <button play-all="songs">Play all</button> -->
+
+       <!--      </div>
+        </div> -->
+
+        <!-- <hr />
+
+        <div class="row">
+            <div class="col-md-12"> -->
+                <!-- init soundManager2 player -->
+                <sound-manager></sound-manager>
+
+               <!--  <p>
+                    Currently Playing: {{ currentPlaying.title }} by {{ currentPlaying.artist }} ({{ currentPostion }} / {{ currentDuration }})
+                </p> -->
+
+                <!-- <div class="seekBase" seek-track>
+                    <div class="seekLoad" ng-style="{width : ( progress + '%' ) }"></div>
+                </div> -->
+                <!-- <br /> -->
+               <!--  <button type="button" class="btn btn-primary" play-music>Play</button>
+                -
+                <button type="button" class="btn btn-primary" pause-music>Pause</button>
+                -
+                <button type="button" class="btn btn-primary" stop-music>Stop</button>
+                -
+                <button type="button" class="btn btn-primary" repeat-music>Repeat ({{ repeat }})</button>
+                -
+                <button play-pause-toggle data-play="Play!" data-pause="Pause!">Play Toggle</button> -->
+
+                <!-- Is Playing: {{ isPlaying }} -->
+                <!-- <br/> -->
+                <!-- <br/>Volume: {{ volume }} -
+                <button music-volume data-type="increase">+</button>
+                -
+                <button music-volume data-type="decrease">-</button> -->
+                <!-- -
+                <button type="button" class="btn btn-primary" mute-music>Mute ({{ mute }})</button>
+                <br/>
+                <br/>
+                <button type="button" class="btn btn-primary" prev-track>Prev Track</button>
+                -
+                <button type="button" class="btn btn-primary" type="button" class="btn btn-primary" next-track>Next Track</button>
+                -
+                <button clear-playlist>Clear Playlist</button>
+                <br/>
+                <br/> -->
+                <!-- <h5>Playlist</h5>
+                <ul>
+                    <li ng-repeat="song in playlist">
+                        <a play-from-playlist="song">{{ song.title }}</a>
+                        -
+                        <a remove-from-playlist="song" data-index="{{$index}}">
+                            <small>(remove)</small>
+                        </a>
+                        <span ng-if="currentPlaying.id == song.id"> - (current)</span>
+                    </li>
+                </ul> -->
+            </div>
+        </div>
     </div>
-
-
+ <!--      </div>
+    </div> -->
+    <!-- ##############End MUSIC############ -->
     <div class="bubblesBox">
 
       <div class="bubblesWrapper">
@@ -57,6 +130,16 @@
           <div class="subTitle">Foods</div>
         </div>
 
+        <div class="bubble foodBubble phrases"  ng-controller="MusicController">
+          <div class="phrases">
+            <li ng-repeat="song in songs">
+              <div class="phrases" music-player="play" add-song="song">{{ song.title }}</div>
+              <div class="phrases" music-player add-song="song">+</div>
+            </li>
+          Currently Playing: {{ currentPlaying.title }} by {{ currentPlaying.artist }} ({{ currentPostion }} / {{ currentDuration }})
+          </div>
+          <div class="subTitle">Song</div>
+        </div>
 
         <div class="bubble activityBubble phrases" ng-click="getActivityTerm()">
           <div class="phrases">{{activity[0]}}</div>
@@ -84,3 +167,4 @@
 
   </div>
 </div>
+
