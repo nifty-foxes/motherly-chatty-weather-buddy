@@ -1,7 +1,7 @@
 angular.module('chattyWeather.weather', ['ui.bootstrap'])
 
 .controller('WeatherController', function($scope, goGet, $http, $location, Activities, Food, $window, $sce) {
-	var weatherData;
+  var weatherData;
   $scope.phrase = ". . loading . .";
   $scope.food;
   $scope.prop;
@@ -152,4 +152,3 @@ angular.module('chattyWeather.weather', ['ui.bootstrap'])
 
   init();
 })
-
