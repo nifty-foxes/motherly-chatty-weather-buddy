@@ -3,7 +3,7 @@ angular.module('chattyWeather', [
   'chattyWeather.service',
   'chattyWeather.activities',
   'chattyWeather.food',
-  'chattyWeather.spotify',
+  'chattyWeather.music',
   'ngRoute'
   ])
 .config(function($routeProvider, $httpProvider) {

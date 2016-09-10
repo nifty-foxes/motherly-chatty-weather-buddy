@@ -1,100 +1,58 @@
-angular.module('chattyWeather.spotify', [])
+angular.module('chattyWeather.music', [
+    'chattyWeather.weather',
+    'angularSoundManager',
+    'ngRoute'
+    ])
 
-.controller('SpotifyController', ['$scope', 'SpotifyController', function ($scope, Spotify) {
+.controller('MusicController', function($scope, goGet) {
+        var weatherData;
+        console.log(goGet)
+        $scope.songs = [];
+        
+        var init = function () {
+            goGet.getWeatherData()
+                .then(function (data) {
+                console.log('init data', data);
+                weatherData = data.data;
+                console.log("############# Weather Data #############", weatherData)
+            console.log("WEATHER-EVENT",weatherData)
+        SC.initialize({
+            client_id: "2773226042879ade8c285c30a9706dab"
+        });
+        
+        SC.get("/tracks", {
+            q: weatherData.weatherEvent,
+            limit: 5
+        }).then(function(tracks) {
 
-    $scope.searchArtist = function () {
-      Spotify.search($scope.searchartist, 'artist').then(function (data) {
-        $scope.artists = data.artists.items;
-      });
-    };
-
-    $scope.login = function () {
-      Spotify.login().then(function (data) {
-        console.log(data);
-        alert("You are now logged in");
-      }, function () {
-        console.log('didn\'t log in');
-      })
-    };
-
-    // Gets an album
-    Spotify.getAlbum('0sNOF9WDwhWunNAHPD3Baj').then(function (data){
-      console.log('=================== Album - ID ===================');
-      console.log(data);
-    });
-    // Works with Spotify uri too
-    Spotify.getAlbum('spotify:album:0sNOF9WDwhWunNAHPD3Baj').then(function (data){
-      console.log('=================== Album - Spotify URI ===================');
-      console.log(data);
-    });
-
-    //Get multiple Albums
-    Spotify.getAlbums('41MnTivkwTO3UUJ8DrqEJJ,6JWc4iAiJ9FjyK0B59ABb4,6UXCm6bOO4gFlDQZV5yL37').then(function (data) {
-      console.log('=================== Albums - Ids ===================');
-      console.log(data);
-    });
-    Spotify.getAlbums(['41MnTivkwTO3UUJ8DrqEJJ','6JWc4iAiJ9FjyK0B59ABb4','6UXCm6bOO4gFlDQZV5yL37']).then(function (data) {
-      console.log('=================== Albums - Array ===================');
-      console.log(data);
-    });
-
-
-    Spotify.getAlbumTracks('41MnTivkwTO3UUJ8DrqEJJ').then(function (data) {
-      console.log('=================== Album Tracks - ID ===================');
-      console.log(data);
-    });
-    Spotify.getAlbumTracks('spotify:album:41MnTivkwTO3UUJ8DrqEJJ').then(function (data) {
-      console.log('=================== Album Tracks - Spotify URI ===================');
-      console.log(data);
-    });
-
-
-
-    //Artist
-    Spotify.getArtist('0LcJLqbBmaGUft1e9Mm8HV').then(function (data) {
-      console.log('=================== Artist - Id ===================');
-      console.log(data);
-    });
-    Spotify.getArtist('spotify:artist:0LcJLqbBmaGUft1e9Mm8HV').then(function (data) {
-      console.log('=================== Artist - Spotify URI ===================');
-      console.log(data);
-    });
-
-    Spotify.getArtistAlbums('0LcJLqbBmaGUft1e9Mm8HV').then(function (data) {
-      console.log('=================== Artist Albums - Id ===================');
-      console.log(data);
-    });
-
-    Spotify.getArtistAlbums('spotify:artist:0LcJLqbBmaGUft1e9Mm8HV').then(function (data) {
-      console.log('=================== Artist Albums - Spotify URI ===================');
-      console.log(data);
-    });
-
-    Spotify.getArtistTopTracks('0LcJLqbBmaGUft1e9Mm8HV', 'AU').then(function (data) {
-      console.log('=================== Artist Top Tracks Australia ===================');
-      console.log(data);
-    });
-
-    Spotify.getRelatedArtists('0LcJLqbBmaGUft1e9Mm8HV').then(function (data) {
-      console.log('=================== Get Releated Artists ===================');
-      console.log(data);
-    });
-
-
-    //Tracks
-    Spotify.getTrack('0eGsygTp906u18L0Oimnem').then(function (data) {
-      console.log('=================== Track ===================');
-      console.log(data);
-    });
-
-    Spotify.getTracks('0eGsygTp906u18L0Oimnem,1lDWb6b6ieDQ2xT7ewTC3G').then(function (data) {
-      console.log('=================== Tracks - String ===================');
-      console.log(data);
-    });
-
-    Spotify.getTracks(['0eGsygTp906u18L0Oimnem','1lDWb6b6ieDQ2xT7ewTC3G']).then(function (data) {
-      console.log('=================== Tracks - Array ===================');
-      console.log(data);
-    });
-
-  }]);
+            if (tracks) {
+                tracks.forEach(function(track) {
+                    if (track.streamable && track.sharing === "public") {
+                        // console.log("############track##########3",track)
+                           
+                        SC.stream('/tracks/' + track.id)
+                            .then(function(player){
+                                // player.start();
+                                // player.play();
+                                // console.log("##############PLAYER###############", player)
+                                var newObj = {
+                                    id: track.id,
+                                    title: track.title,
+                                    artist: track.genre,
+                                    // url: "https://api.soundcloud.com/tracks/293/stream?client_id=2773226042879ade8c285c30a9706dab"
+                                    // url: "https://api.soundcloud.com/tracks/103632115/stream?client_id=2773226042879ade8c285c30a9706dab"
+                                    url: track.uri + '/stream?client_id=2773226042879ade8c285c30a9706dab'
+                                };
+                                // console.log("NEWOBJJJJJJJJJJJJJJJJJJJJJJJJJ", newObj)
+                                $scope.$apply(function () {
+                                    $scope.songs.push(newObj);
+                                });
+                            }); 
+                        };    
+                    })
+                }      
+            })
+            });
+          }
+  init()
+});
