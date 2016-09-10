@@ -13,7 +13,7 @@ angular.module('chattyWeather.weather', ['ui.bootstrap'])
   $scope.weatherEvent;
   $scope.hourlyTemp = [];
   $scope.hourlyTime = [];
-  $scope.timeWeather = "";
+  $scope.timeWeather = [];
   $scope.hourly = {};
   var sky;
 
@@ -55,45 +55,44 @@ angular.module('chattyWeather.weather', ['ui.bootstrap'])
   }
 
   function getHours(){
-
     var date = new Date();
+    var newHour;
     var hour =  date.getHours();
-    var amPm = "AM";
      for(var i = 0; i < 6; i++){
-      date.setHours(++hour);
-    if(hour > 12){
-      hour -= 12;
-      amPm = "PM"
-    }
+       $scope.hourNow = date.setHours(++hour);
+      var amPm = (hour > 11) ? "PM" : "AM";
+      console.log("HOUR", hour, amPm)
     if(hour < 10)
       space = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
   else
       space = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
-
       $scope.hourlyTime.push((hour));
       $scope.hourlyTemp.push(Math.round(weatherData.hourlyTemp[i]));
-      $scope.timeWeather += $scope.hourlyTime[i] + " " + amPm + space + $scope.hourlyTemp[i] + "℉" + '<br>';
+      if($scope.hourlyTime[i] > 12){
+        newHour = hour - 12;
+        $scope.timeWeather += "&nbsp;" + newHour + " " + amPm + space + $scope.hourlyTemp[i] + "℉" + '<br>';
+      }
+      else{
+        $scope.timeWeather += $scope.hourlyTime[i] + " " + amPm + space + $scope.hourlyTemp[i] + "℉" + '<br>';
+      }
      }
 
   }
+
 
   var init = function () {
     goGet.getWeatherData()
       .then(function (data) {
         // console.log('init data', data);
         weatherData = data.data;
-        $scope.hourlyTemp.data = weatherData.hourlyTemp;
-        $scope.hourlyTime.data = weatherData.hourlyTime;
+        // $scope.hourlyTemp.data = weatherData.hourlyTemp;
+        // $scope.hourlyTime.data = weatherData.hourlyTime;
         $scope.hourly = weatherData.data;
+        console.log($scope.hourly)
       getHours();
-      $scope.popover = $sce.trustAsHtml('<h3>HOURLY WEATHER</h3><hr><center>'+$scope.timeWeather+'<br>');
-
-      self.explicitlyTrustedHtml = $sce.trustAsHtml(
-        '<span onmouseover="this.textContent=&quot;Explicitly trusted HTML bypasses ' +
-        'sanitization.&quot;">Hover over this text.</span>');
-
-
-
+      // $scope.popover = $sce.trustAsHtml('<h3>HOURLY WEATHER</h3><i class="fa fa-clock-o" aria-hidden="true">'
+      //   + '</i>&nbsp;&nbsp;'+$scope.timeWeather + '<br><span class="sun">&#9728;&nbsp;&nbsp;</span>' + $scope.timeWeather2 + '</tr></table></center>');
+        $scope.popover = $sce.trustAsHtml('<h3>HOURLY WEATHER</h3><i class="fa fa-clock-o" aria-hidden="true"></i><span class="sun">&#9728;</i></span><br>' + $scope.timeWeather);
         display(weatherData);
         setInterval(display.bind(null, weatherData), 5000);
       })
