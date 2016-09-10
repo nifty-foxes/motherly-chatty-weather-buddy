@@ -1,6 +1,5 @@
 
 /*    MAIN STYLES    */
-
 * {
   box-sizing: border-box;
 }
@@ -22,6 +21,20 @@ html, body {margin: 0;
 .box {
   height: 100%;
 }
+
+.businessName{
+  font-size: 25px;
+  margin-top: 0px;
+  padding-bottom:18px;
+}
+
+
+.businessText{
+  font-size: 18px;
+  padding-left: 20px;
+}
+
+
 h1 {
   margin: 0;
   }
@@ -32,7 +45,14 @@ h1 {
   color: white;
   text-align: center;
 }
+a{
+  color: white;
+  padding: 18px;
+}
 
+a:visited{
+  color:white;
+}
 
 
 
@@ -229,8 +249,10 @@ h3{
 }
 .popover {
     background: tomato;
-    padding: 10px;
-    font-size: 16px;
+    padding: 20px;
+    margin: 20px;
+    font-size: 18px;
+    max-width: 600px;
     /*font-family: 'Raleway', sans-serif;*/
 }
 .popup{
@@ -238,13 +260,36 @@ h3{
  float: left;
  padding-left: 40px;
  }
+ /* padding-top: 20px;
+  float: right;
+  padding-left: 40px;
+   padding-right: 40px;
+   position: absolute;
+   float:right;
+bottom: 0;
+width: 50%;
+margin: 0 auto;
+bottom: 0;*/
 
+
+  }
+
+  .blah{
+    margin-left: 100px;
+  }
+
+.fa-clock-o, .sun{
+  color: yellow;
+  padding-left: 20px;
+  padding-right: 30px;
+}
 .phrases .popover {
   background-color: transparent;
   border: none;
   max-width: 450px;
   margin: 0px;
   padding: 0px;
+
 }
 
 /* Inner (specific) popover box which houses mtaAlertBox */
@@ -264,6 +309,7 @@ h3{
   margin: 0;
   padding: 8px 14px;
   border-radius: 10px 10px 0px 0px;
+  color: black;
 }
 
 .mtaDetails {
