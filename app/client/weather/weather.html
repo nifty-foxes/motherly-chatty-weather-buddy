@@ -132,11 +132,13 @@
 
         <div class="bubble foodBubble phrases"  ng-controller="MusicController">
           <div class="phrases">
-            <li ng-repeat="song in songs">
-              <div class="phrases" music-player="play" add-song="song">{{ song.title }}</div>
-              <div class="phrases" music-player add-song="song">+</div>
-            </li>
-          Currently Playing: {{ currentPlaying.title }} by {{ currentPlaying.artist }} ({{ currentPostion }} / {{ currentDuration }})
+            <h5 ng-repeat="song in songs">
+              <div ng-if="music_index == $index">
+                <div class="phrases" music-player="play" add-song="song">{{ song.title }}</div>
+                <!-- <div class="phrases" music-player add-song="song">+</div> -->
+              </div>
+            </h5>
+            Currently Playing: {{ currentPlaying.title }} by {{ currentPlaying.artist }} ({{ currentPostion }} / {{ currentDuration }})
           </div>
           <div class="subTitle">Song</div>
         </div>

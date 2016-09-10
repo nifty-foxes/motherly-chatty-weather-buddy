@@ -107,6 +107,7 @@ angular.module('chattyWeather.weather', ['ui.bootstrap'])
     positionSunMoon();
     $scope.$apply(function() {
       // console.log("DATAAA", data.hourlyTemp)
+      // $scope.weatherEvent = data.weatherEvent;
       $scope.weatherEvent = data.weatherEvent;
 
       // console.log('WEATHEREVENT', $scope.weatherEvent);
