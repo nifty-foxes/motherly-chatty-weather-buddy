@@ -150,5 +150,5 @@ angular.module('chattyWeather.weather', ['ui.bootstrap'])
   }
 
   init();
-})
 
+})
