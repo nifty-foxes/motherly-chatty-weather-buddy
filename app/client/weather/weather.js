@@ -92,7 +92,7 @@ angular.module('chattyWeather.weather', ['ui.bootstrap'])
       getHours();
       // $scope.popover = $sce.trustAsHtml('<h3>HOURLY WEATHER</h3><i class="fa fa-clock-o" aria-hidden="true">'
       //   + '</i>&nbsp;&nbsp;'+$scope.timeWeather + '<br><span class="sun">&#9728;&nbsp;&nbsp;</span>' + $scope.timeWeather2 + '</tr></table></center>');
-        $scope.popover = $sce.trustAsHtml('<h3>HOURLY WEATHER</h3><i class="fa fa-clock-o" aria-hidden="true"></i><span class="sun">&#9728;</i></span><br>' + $scope.timeWeather);
+        $scope.popover = $sce.trustAsHtml('<div class="weather"<h3>HOURLY WEATHER</div></h3><hr><i class="fa fa-clock-o" aria-hidden="true"></i><span class="sun">&#9728;</i></span><br>' + $scope.timeWeather);
         display(weatherData);
         setInterval(display.bind(null, weatherData), 5000);
       })
