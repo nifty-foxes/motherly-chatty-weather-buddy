@@ -1,27 +1,28 @@
-# Chatty Weather - A handy weather app delivering customizable weather forecasts and helpful recommendations using the MEAN stack
+# Chatty Weather
+A handy weather app delivering customizable weather forecasts and helpful recommendations using the MEAN stack
 
 ## Information Flow
   CLIENT-SIDE
-         Weather controller loads
-      => Loads goGet factory, runs its getWeatherData function
-      => Makes a GET request to /api/weather
-  SERVER-SIDE Router picks up on this
-    WEATHER CONTROLLER
-      => Makes a GET request to https://api.forecast.io
-      => Receives back a huge object with tons of forecasting info
-      => Then...
-    LOGIC CONTROLLER
-      => Parses huge object into useful info
-        Contains: timezone, temperatureNum, temperature, weatherEvent, hourlyTemp, hourlyTime, data
-      => req.body and req.query now consist of this parsed info
-      => Then...
-    TRANSPORTATION CONTROLLER
-      => Gets current subway info
-      => Adds to req.query
-      => Then...
-    PHRASES CONTROLLER
-      => Gets relevant phrases given the weather-related info held in req.body
-      => Parses relevant info in req.body, and adds it to phrases obj
+         Weather controller loads  
+      => Loads goGet factory, runs its getWeatherData function  
+      => Makes a GET request to /api/weather  
+  SERVER-SIDE Router picks up on this  
+    WEATHER CONTROLLER  
+      => Makes a GET request to https://api.forecast.io  
+      => Receives back a huge object with tons of forecasting info  
+      => Then...  
+    LOGIC CONTROLLER  
+      => Parses huge object into useful info  
+        Contains: timezone, temperatureNum, temperature, weatherEvent, hourlyTemp, hourlyTime, data  
+      => req.body and req.query now consist of this parsed info  
+      => Then...  
+    TRANSPORTATION CONTROLLER  
+      => Gets current subway info  
+      => Adds to req.query  
+      => Then...  
+    PHRASES CONTROLLER  
+      => Gets relevant phrases given the weather-related info held in req.body  
+      => Parses relevant info in req.body, and adds it to phrases obj  
       => Responds with json obj of phrases, which gets passed back to client
 
 ## Directory Layout
