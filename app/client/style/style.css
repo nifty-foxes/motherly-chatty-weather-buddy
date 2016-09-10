@@ -312,13 +312,13 @@ h3{
 }
 .clear-day .phrases .mtaTitle,
 .clear-day .mtaDetails tr {
-  background-color: darkgreen !important;
+  background-color: rgb(255, 60, 0) !important;
 }
 .clear-day .phrases .mtaDetails {
-  background-color: green;
+  background-color: tomato;
 }
 .clear-day .phrases .popover.left>.arrow:after {
-  border-left-color: green;
+  border-left-color: tomato;
 }
 
 /**/
