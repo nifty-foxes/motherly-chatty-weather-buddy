@@ -245,22 +245,38 @@ h3{
 }
 .popover {
     background: tomato;
-    padding: 10px;
-    font-size: 16px;
+    padding: 20px;
+    margin: 20px;
+    font-size: 18px;
+    max-width: 600px;
     /*font-family: 'Raleway', sans-serif;*/
 }
 .popup{
-  padding-top: 20px;
-  float: left;
+ /* padding-top: 20px;
+  float: right;
   padding-left: 40px;
+   padding-right: 40px;
+   position: absolute;
+   float:right;
+bottom: 0;
+width: 50%;
+margin: 0 auto;*/
+bottom: 0;
+
   }
 
+.fa-clock-o, .sun{
+  color: yellow;
+  padding-left: 20px;
+  padding-right: 30px;
+}
 .phrases .popover {
   background-color: transparent;
   border: none;
   max-width: 450px;
   margin: 0px;
   padding: 0px;
+
 }
 
 /* Inner (specific) popover box which houses mtaAlertBox */
