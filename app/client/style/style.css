@@ -253,12 +253,19 @@ h3{
     margin: 20px;
     font-size: 18px;
     max-width: 600px;
+    
     /*font-family: 'Raleway', sans-serif;*/
 }
+
+.weather{
+  font-size: 15px;
+}
 .popup{
- padding-top: 20px;
- float: left;
- padding-left: 40px;
+ padding: 20px;
+bottom: 0;
+position: absolute;
+right: 40%;
+font-size: 20px;
  }
  /* padding-top: 20px;
   float: right;
@@ -268,11 +275,7 @@ h3{
    float:right;
 bottom: 0;
 width: 50%;
-margin: 0 auto;
-bottom: 0;*/
-
-
-  }
+margin: 0 auto;*/
 
   .blah{
     margin-left: 100px;
