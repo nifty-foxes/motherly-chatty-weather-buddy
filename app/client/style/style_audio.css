@@ -1,0 +1,32 @@
+.audiojs {
+  position: absolute;
+  top: 0px;
+  right: 40px;
+  height: 36px;
+  width: 190px;
+  font-family: 'Ubuntu', sans-serif;
+  background-image: none;
+  opacity: .7;
+  background-color: rgba(64, 64, 64, .6);
+}
+.audiojs .play-pause {
+  margin-right: 5px;
+  border-right: 0px;
+  height: 100%;
+}
+.play, .pause, .loading, .audiojs .error {
+  height: 100%;
+  position: relative;
+  top: 3px;
+  transform:scale(1.4,1.4);
+}
+.audiojs .scrubber {
+  width: 0px;
+  margin: 0px;
+}
+.audiojs .time {
+  border-left: 1px solid rgba(40, 40, 40, .6);
+  padding-left: 15px;
+  height: 100%;
+  font-size: 22px;
+}

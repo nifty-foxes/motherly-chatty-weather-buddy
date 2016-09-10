@@ -11,10 +11,35 @@ describe('Example', function() {
 
 
 describe('Server', function() {
-  it('should return the content of index.html', function (done) {
+  it('should receive a 200 status code from "/"', function (done) {
+    // just assume that if it contains an <input> tag its index.html
+    request
+      .get('/')
+      .expect(200, done);
+  });
+
+  it('should receive a 200 status code from "api/transportation"', function (done) {
     // just assume that if it contains an <input> tag its index.html
     request
       .get('/api/transportation/')
-      .expect(200, /<input/, done);
+      .expect(404, done);
   });
+
+  it('should receive a 404 status code from nonexistent endpoint', function (done) {
+    // just assume that if it contains an <input> tag its index.html
+    request
+      .get('/bleebloo')
+      .expect(404, done);
+  });
+});
+
+describe('Functions', function() {
+
+  it('should have function ', function (done) {
+    // just assume that if it contains an <input> tag its index.html
+    request
+      .get('/bleebloo')
+      .expect(404, done);
+  });
+
 });

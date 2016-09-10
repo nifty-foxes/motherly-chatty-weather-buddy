@@ -23,5 +23,3 @@ angular.module('chattyWeather', [
       redirectTo: '/weather'
     });
 })
-
-
