@@ -42,7 +42,6 @@ angular.module('chattyWeather.weather', ['ui.bootstrap'])
   //   // return $sce.trustAsHtml(htmlStr)
   // };
 
-  $scope.alertDetails = $sce.trustAsHtml();
   $scope.assignDetail = function(alert) {
     console.log('alert', alert);
     $scope.alertDetails = $sce.trustAsHtml('<div class="mtaTitle">' + alert.title + '</div><div class="mtaDetails">' + alert.text + '</div>');
@@ -152,4 +151,3 @@ angular.module('chattyWeather.weather', ['ui.bootstrap'])
 
   init();
 })
-
