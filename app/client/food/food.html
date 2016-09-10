@@ -10,11 +10,19 @@
     <div ng-repeat="businesses in data">				 
       <div class="linkBox">
         <a href="{{businesses.url}}" target="_blank">
-          <img class="thumb" ng-src="{{businesses.image_url}}" />
+
+
+        <div>
+  <table>
+  <tr>
+  <td class="businessImg"><img ng-src="{{businesses.image_url}}"></td>
+  <td class="businessText">{{ businesses.snippet_text }}</td>
+  </tr>
+  </table>
+</div>
           <img ng-src="{{businesses.rating_img_url}}"/>
           <h2 class="businessName">{{ businesses.name }}</h2>
         </a>
-        <h3 class="businessText">{{ businesses.snippet_text }}</h3>
       </div>
     </div>
   </div>
