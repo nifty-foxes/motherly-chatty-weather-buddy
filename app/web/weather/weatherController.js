@@ -7,15 +7,22 @@ var app = express();
 
 function getHourly(req, res, next) {
 
-  var newurl = "https://api.forecast.io/forecast/32fb6fd1e3da63be7cd7cae8121fe98a/" 
+  var newurl = "https://api.forecast.io/forecast/32fb6fd1e3da63be7cd7cae8121fe98a/"
     + req.query.latitude + "," + req.query.longitude;
 
   request.get({url:newurl}, function(error, response, body) {
     if(error) next(error);
 
+
     req.body = JSON.parse(body).hourly;
+    // var data = req.body.data;
+    // console.log(' length', data.length);
+    // for(var i = 0; i < data.length; i++){
+    // console.log("TEMP", req.body.data[i].temperature);
+    // }
     req.body.timezone = JSON.parse(body).timezone;
     req.body = JSON.stringify(req.body);
+    // console.log("REQBODY", req.body)
     next();
   });
 }

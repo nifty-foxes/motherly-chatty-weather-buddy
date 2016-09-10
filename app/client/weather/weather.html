@@ -1,23 +1,38 @@
 <div class="{{ weatherEvent }}-Star positionSun"></div>
 <div class="{{ weatherEvent }}-Star positionMoon"></div>
-<div class="{{ weatherEvent }}"> <!-- background animations-->
+   <!-- background animations-->
+<div class="{{ weatherEvent }}">
+<!-- <div class="clear-night"> -->
+
+
+  <!--  -->
   <h1 class="title">&mdash; Chatty Weather &mdash;</h1>
   <div class="wrapper">
-
-
     <div class="mainBubble">
-    	<div class="mainPhrase"><p>{{phrase}}</div>
+      <div class="mainPhrase"><p>{{phrase}}</div>
     </div>
 
 
     <div class="infoBox">
       <div class="infoWrapper">
-        <div class="icon"> 
+        <div class="icon">
             <canvas id="{{ weatherEvent }}" width="64" height="64"></canvas>
         </div>
         <div class="temp">{{ temp }}</div>
         <div class="city">{{ city }}</div>
         <div class="time">{{ time }}</div>
+        <div class="popup clickable" uib-popover-html="popover">Hourly Weather</div>
+        <!-- <div class="hourly">{{timeWeather}}</div> -->
+        
+  <!--   <table class="table">
+    <tr ng-repeat="data in hourly">
+    <td>{{data.temperature}}</td>
+    <td>{{data.time}}</td> -->
+<!-- 
+<div ng-repeat="">
+    <p ng-bind-html="trustAsHtml(question.body)"></p>
+</div>
+    </tr> -->
       </div>
     </div>
 
@@ -55,11 +70,18 @@
           <div class="phrases">{{activity[0]}}</div>
           <div class="subTitle">Activities</div>
         </div>
-
-
         <div ng-show="city === 'New York'" class="bubble mtaBubble phrases">
           <div class="mtaAlertBox">
-            <div ng-repeat="alert in mtaAlert" class="phrases">{{alert}}</div>
+            <div ng-repeat="alert in mtaAlert" class="phrases">
+              <span class="clickable" ng-click="assignDetail(alert)" popover-placement="left" uib-popover-html="alertDetails" >{{alert.summary}}</span>
+                <!-- Static HTML -->
+              <!-- <span class="clickable" ng-click="displayAlert(alert)" uib-popover-html="alertDetails" >{{alert.summary}}</span> -->
+                <!-- http://stackoverflow.com/questions/37557147/angular-ui-bootstrap-dynamic-popover-template-id -->
+                <!-- http://stackoverflow.com/questions/34797218/dynamically-creating-ng-templates-to-show-popover-content-using-angular-ui-boots -->
+              <!-- <span class="clickable" uib-popover-template="alertDetails.html" popover-trigger="mouseenter">{{alert.summary}}</span> -->
+                <!-- ng-click="displayAlert(alert)" -->
+              <!-- uib-popover-template="myTemplate_row.html" popover-trigger="mouseenter"> -->
+            </div>
           </div>
           <div class="subTitle">MTA alerts</div>
         </div>
@@ -70,10 +92,3 @@
 
   </div>
 </div>
-
-
-
-
-
-
-

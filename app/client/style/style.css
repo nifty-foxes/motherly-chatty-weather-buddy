@@ -1,18 +1,21 @@
+
+/*    MAIN STYLES    */
+
 * {
   box-sizing: border-box;
 }
-html, body {margin: 0; 
-  height: 100%; 
+html, body {margin: 0;
+  height: 100%;
   overflow: hidden;
   font-family: 'Raleway', sans-serif;
-  font-weight: 100; 
+  font-weight: 100;
   color: white;
   text-shadow: 1px 1px 5px rgba(255,0,0,0.2);
   background-color: #1382e9;
 
-  -webkit-user-select: none;  
-  -moz-user-select: none;     
-  -ms-user-select: none;      
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 
 }
@@ -21,7 +24,7 @@ html, body {margin: 0;
 }
 h1 {
   margin: 0;
-}
+  }
 .title {
   font-family: 'Lobster', cursive;
   font-size: 3.5rem;
@@ -29,6 +32,11 @@ h1 {
   color: white;
   text-align: center;
 }
+
+
+
+/*    MAIN BUBBLE    */
+
 .mainPhrase {
   position: absolute;
   top: 50%;
@@ -54,7 +62,7 @@ h1 {
   box-shadow: 0px 5px 25px rgba(255,0,0,0.2);
 }
 
-.mainBubble:after 
+.mainBubble:after
 {
 content: '';
 position: absolute;
@@ -69,6 +77,8 @@ left: 48%;
 }
 
 
+
+/*    INFO BOX    */
 
 .infoBox {
   margin-top: 50px;
@@ -108,6 +118,10 @@ left: 48%;
   width:22%;
 }
 
+
+
+/*    PHRASE BUBBLES    */
+
 .bubblesBox {
   margin-top: 110px;
   position: relative;
@@ -144,7 +158,7 @@ left: 48%;
   flex-wrap: wrap;
 }
 
-.bubble:after 
+.bubble:after
 {
   content: '';
   position: absolute;
@@ -160,22 +174,26 @@ left: 48%;
 
 .propBubble {
   height:100%;
-  min-height:120px; 
+  min-height:120px;
 }
 .foodBubble {
   height:100%;
-  min-height:120px; 
+  min-height:120px;
   cursor: pointer;
 }
 .activityBubble {
   height:100%;
-  min-height:120px; 
+  min-height:120px;
   cursor: pointer;
 }
 .mtaBubble {
   height:100%;
-  min-height:120px; 
+  min-height:120px;
 }
+.clickable {
+  cursor:pointer;
+}
+
 .mtaAlertBox {
   display: flex;
   flex-direction: column;
@@ -195,9 +213,80 @@ left: 48%;
   text-shadow: 1px 1px 2px rgba(255,0,0,0.2);
 }
 
-/* background Animations */ 
 
-.clear-day, .partly-cloudy-day, .clear-night, .partly-cloudy-night, .cloudy, .rain, .fog, .snow, .sleet { 
+
+/*    MTA POPOVERS    */
+
+/* Outer (specific) popover box which houses mtaAlertBox */
+  /* Margin & padding adjustments are a hacky way to make the popover titles appear how I'd like*/
+
+/* Popover heading */
+h3{
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+}
+.popover {
+    background: tomato;
+    padding: 10px;
+    font-size: 16px;
+    /*font-family: 'Raleway', sans-serif;*/
+}
+
+.phrases .popover {
+  background-color: transparent;
+  border: none;
+  max-width: 450px;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* Inner (specific) popover box which houses mtaAlertBox */
+.phrases .popover-content.ng-binding {
+  padding: 0px;
+  margin: 0px;
+
+}
+
+/* Inner popover container */
+.mtaTitle {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 18pt;
+  font-weight: normal;
+  background-color: #F7F7F7;
+  border-bottom: 1px solid #EBEBEB;
+  margin: 0;
+  padding: 8px 14px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.mtaDetails {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 16pt;
+  color: white;
+  width: 350px;
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  padding: 8px 20px 8px 14px;
+  border-radius: 0px 0px 10px 10px;
+  /*margin-right: 0px;*/
+  width: 100%;
+}
+
+.mtaDetails a {
+  color: white;
+}
+
+.mtaDetails b {
+  font-weight: normal;
+}
+
+
+
+/* BACKGROUND ANIMATIONS */
+
+.clear-day, .partly-cloudy-day, .clear-night, .partly-cloudy-night, .cloudy, .rain, .fog, .snow, .sleet {
   background-position: 0px 0px;
   background-repeat: repeat;
   height: 100%;
@@ -205,46 +294,156 @@ left: 48%;
   animation: bganimCloud 50s linear infinite;
 }
 
-.clear-day { 
+
+
+/* WEATHER SPECIFICS */
+
+/**/
+.clear-day {
   background-image: url('../assets/bg_clear_day.png');
 }
-.clear-night { 
+.clear-day .phrases .mtaTitle,
+.clear-day .mtaDetails tr {
+  background-color: darkgreen !important;
+}
+.clear-day .phrases .mtaDetails {
+  background-color: green;
+}
+.clear-day .phrases .popover.left>.arrow:after {
+  border-left-color: green;
+}
+
+/**/
+.clear-night {
   background-image: url('../assets/bg_clear_night.png');
 }
-.partly-cloudy-day { 
+.clear-night .phrases .mtaTitle,
+.clear-night .mtaDetails tr {
+  background-color: grey !important;
+}
+.clear-night .phrases .popover {
+  background-color: darkgrey;
+}
+.clear-night .phrases .popover.left>.arrow:after {
+  border-left-color: grey;
+}
+
+/**/
+.partly-cloudy-day {
   background-image: url('../assets/bg_partly_cloudy_day.png');
 }
-.partly-cloudy-night { 
+.partly-cloudy-day .phrases .mtaTitle,
+.partly-cloudy-day .mtaDetails tr {
+  background-color: grey !important;
+}
+.partly-cloudy-day .phrases .popover {
+  background-color: darkgrey;
+}
+.partly-cloudy-day .phrases .popover.left>.arrow:after {
+  border-left-color: grey;
+}
+
+/**/
+.partly-cloudy-night {
   background-image: url('../assets/bg_partly_cloudy_night.png');
 }
-.cloudy { 
+.partly-cloudy-night .phrases .mtaTitle,
+.partly-cloudy-night .mtaDetails tr {
+  background-color: grey !important;
+}
+.partly-cloudy-night .phrases .popover {
+  background-color: darkgrey;
+}
+.partly-cloudy-night .phrases .popover.left>.arrow:after {
+  border-left-color: grey;
+}
+
+/**/
+.cloudy {
   background-image: url('../assets/bg_cloudy.png');
 }
-.fog { 
+.cloudy .phrases .mtaTitle,
+.cloudy .mtaDetails tr {
+  background-color: grey !important;
+}
+.cloudy .phrases .popover {
+  background-color: darkgrey;
+}
+.cloudy .phrases .popover.left>.arrow:after {
+  border-left-color: grey;
+}
+
+/**/
+.fog {
   background-image: url('../assets/bg_fog.png');
 }
+.fog .phrases .mtaTitle,
+.fog .mtaDetails tr {
+  background-color: grey !important;
+}
+.fog .phrases .popover {
+  background-color: darkgrey;
+}
+.fog .phrases .popover.left>.arrow:after {
+  border-left-color: grey;
+}
+
+/**/
 .windy {
   background-image: url('../assets/bg_cloudy.png');
   height: 100%;
   animation: bganimCloud 7s linear infinite;
 }
+.windy .phrases .mtaTitle,
+.windy .mtaDetails tr {
+  background-color: grey !important;
+}
+.windy .phrases .popover {
+  background-color: darkgrey;
+}
+.windy .phrases .popover.left>.arrow:after {
+  border-left-color: grey;
+}
+
 
 @keyframes bganimCloud {
   from { background-position: 0 0; }
   to { background-position: 596px 0; }
 }
 
-.rain { 
+/**/
+.rain {
   background-image: url('../assets/bg_rain.png');
   height: 100%;
-
   animation: bganimRain 1.5s linear infinite;
 }
-.snow, .sleet { 
+.rain .phrases .mtaTitle,
+.rain .mtaDetails tr {
+  background-color: darkgrey !important;
+}
+.rain .phrases .popover {
+  background-color: grey;
+}
+.rain .phrases .popover.left>.arrow:after {
+  border-left-color: grey;
+}
+
+/**/
+.snow, .sleet {
   background-image: url('../assets/bg_snow.png');
   height: 100%;
 
   animation: bganimRain 15s linear infinite;
+}
+.snow .phrases .mtaTitle,
+.snow .mtaDetails tr {
+  background-color: darkgrey !important;
+}
+.snow .phrases .popover {
+  background-color: grey;
+}
+.snow .phrases .popover.left>.arrow:after {
+  border-left-color: grey;
 }
 
 @keyframes bganimRain {
@@ -253,7 +452,10 @@ left: 48%;
 }
 
 
-/* Time indicator animation */ 
+
+/* OTHER */
+
+/* Time indicator animation */
 
 .clear-day-Star, .partly-cloudy-day-Star {
   position: absolute;
@@ -273,12 +475,12 @@ left: 48%;
     transform: rotate(-150deg)
                translateX(1000px)
                rotate(150deg);
-              
+
   }
   to {
     transform: rotate(-30deg)
-               translateX(1000px) 
-               rotate(30deg);        
+               translateX(1000px)
+               rotate(30deg);
   }
 }
 .rain-Star, .cloudy-Star, .rain-Star, .fog-Star, .snow-Star, .sleet-Star {
@@ -299,12 +501,12 @@ left: 48%;
     transform: rotate(-150deg)
                translateX(1000px)
                rotate(150deg);
-              
+
   }
   to {
     transform: rotate(-30deg)
-               translateX(1000px) 
-               rotate(30deg);              
+               translateX(1000px)
+               rotate(30deg);
   }
 }
 
@@ -321,7 +523,7 @@ left: 48%;
 
   /*animation: moonanm 40s linear infinite;*/
 }
-.rain-Star.positionMoon, .cloudy-Star.positionMoon, .rain-Star.positionMoon, 
+.rain-Star.positionMoon, .cloudy-Star.positionMoon, .rain-Star.positionMoon,
 .fog-Star.positionMoon, .snow-Star.positionMoon, .sleet-Star.positionMoon {
   background-image: url('../assets/rain.png');
 }
