@@ -34,7 +34,7 @@ function display(data) {
   $('.info').css({
     "margin-top": "15px",
     "margin-bottom": "25px" });
-    
+
 
   $('#temp').html(data.temperature + "\&deg;F   " + data.weatherEvent.split("-").join(" "));
 
